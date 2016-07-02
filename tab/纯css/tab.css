@@ -1,0 +1,84 @@
+.rightbox {
+  position: relative;
+  width: 302px;
+  height: 159px;
+  left: 40px;
+}
+.tabs {
+  float: none;
+  list-style: none;
+  position: relative;
+  text-align: left;
+}
+.tabs .news {
+  display: block;
+    height: 23px;
+    width: 302px;
+    text-indent: 8px;
+    font-size: 14px;
+    border-top: 1px solid #dcdcdc;
+    text-decoration: none;
+}
+.news a {
+  text-decoration: none;
+}
+.tabs .time {
+   line-height: 24px;
+   color: #878787;
+   float: right;
+   font-size: 13px;
+}
+
+label a {
+  text-decoration: none;
+}
+.tabs li {
+  float: left;
+  display: block;
+}
+.tabs input[type="radio"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+.tabs label {
+  display: block;
+  border-radius: 2px 2px 0 0;
+  font-size: 20px;
+  font-weight: normal;
+  text-transform: uppercase;
+  cursor: pointer;
+  position: relative;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+.tabs label:hover {
+  color: red;
+}
+.tabs .tab-content1 {
+  z-index: 2;
+  display: block;
+  overflow: hidden;
+  font-size: 17px;
+  line-height: 25px;
+  position: absolute;
+  left: 0;
+  top: 45px;
+}
+.tabs .tab-content2 {
+  z-index: 2;
+  display: none;
+  overflow: hidden;
+  font-size: 17px;
+  line-height: 25px;
+  position: absolute;
+  top: 45px;
+  left: 0;
+  background: #fff;
+}
+.tabs [id^="tab"]:hover ~ [id^="tab-content"] {
+  display: block;
+}
+

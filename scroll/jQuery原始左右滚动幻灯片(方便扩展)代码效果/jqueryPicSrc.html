@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>jQuery原始左右滚动幻灯片(方便扩展)代码效果</title>
+<style>
+*{margin:0px;padding:0px;list-style-type:none;}
+.v_out{width:748px;margin:20px auto;overflow:hidden;}
+.v_show{width:665px;overflow:hidden;position:relative;height:280px;float:left}
+.v_cont{ width:6650px;position:absolute;left:0px;top:0px;}
+.v_cont ul{float:left;text-align:center;line-height:50px;}
+.v_cont ul li{width:665px;height:250px;background:#f8f8f8;float:left;margin-top:3px;}
+
+
+.v_out_p{position:relative;overflow:visible}
+.circle{position:absolute;left: 50%;top: 220px;margin-left: -80px;}
+.circle li{cursor:pointer;width:15px;height:15px;float:left;margin-right:10px;border: 1px solid #fff;border-radius: 100% ;text-align: center;color: #fff;}
+.circle .circle-cur{background:#fff}
+
+
+.prev,.next{float:left;padding:105px 9px 0}
+.prev a{ background:#f00;}
+.prev .ico_1{ background:url(input_a.gif) no-repeat 0 -3757px;}
+
+.next a{background:#f00 }
+.next .ico_2{background:url(input_a.gif) no-repeat right -3757px;}
+.prev,.prev a,.next,.next a{width:21px;height:28px; display:block}
+</style>
+</head>
+<body>
+<!--代码部分begin-->
+<div class="v_out v_out_p">
+        <div class="prev"><a href="javascript:void(0)"></a></div>
+        
+    <div class="v_show">
+                <div class="v_cont">
+                        <ul>
+                                <li index="0" style="background:#f00"><img src="1.jpg" alt="" /></li>
+                                <li index="1" style="background:green"><img src="2.jpg" alt="" /></li>
+                                <li index="2" style="background:#f0f"><img src="3.jpg" alt="" /></li>
+                                <li index="3" style="background:#999"><img src="4.jpg" alt="" /></li>
+                                <li index="4" style="background:#666"><img src="5.jpg" alt="" /></li>
+                        </ul>
+                </div>
+        </div>
+        
+    <div class="next"><a href="javascript:void(0)"></a></div>
+
+        <ul class="circle">
+                <li class="circle-cur"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+        </ul>
+</div>
+
+<script src="http://www.lanrenzhijia.com/ajaxjs/1.4.4/jquery-1.4.4.min.js"></script>
+<script>
+$(function() {
+        var index=0;
+        var vcon = $(".v_cont ");
+        var $li=vcon.find('li');
+        var $len=$li.length;
+        var $wid=$li.width();
+        $(".next a").click(function() {
+                $('.prev a').show();
+                nextscroll()
+        });
+        $(".prev a").click(function() {
+                $(".next a").show();
+                prevscroll()
+        });
+        function nextscroll() {
+                index++;
+                var offset = $wid * -1;
+                vcon.stop().animate({
+                        left: offset
+                }, "slow", function() {
+                        var firstItem = $(".v_cont ul li").first();
+                        vcon.find("ul").append(firstItem);
+                        $(this).css("left", "0px");
+                        $(".circle li").eq(index).addClass("circle-cur").siblings().removeClass('circle-cur')
+                })
+                if(index+1==$len){
+                        $(".next a").hide();
+                }
+        };
+        function prevscroll(){
+                index--;
+                var offset = $wid * -1;
+                var lastItem = $(".v_cont ul li").last();
+                vcon.find("ul").prepend(lastItem);
+                vcon.css("left", offset);
+                vcon.animate({
+                        left: "0px"
+                }, "slow", function() {
+                $(".circle li").eq(index).addClass("circle-cur").siblings().removeClass('circle-cur')
+                })
+                if(index+1==1){
+                        $(".prev a").hide();
+                }
+        }
+        var animateEnd = 1;
+        $(".circle li").click(function() {
+                if (animateEnd == 0) {
+                        return
+                }
+                $(this).addClass("circle-cur").siblings().removeClass("circle-cur");
+                var nextindex = $(this).index();
+                var currentindex = $(".v_cont li").first().attr("index");
+                var curr = $(".v_cont li").first().clone();
+                if (nextindex > currentindex) {
+                        for (var i = 0; i < nextindex - currentindex; i++) {
+                                var firstItem = $(".v_cont li").first();
+                                $(".v_cont ul").append(firstItem)
+                        }
+                        $(".v_cont ul").prepend(curr);
+                        var offset = ($(".v_cont li").width()) * -1;
+                        if (animateEnd == 1) {
+                                animateEnd = 0;
+                                $(".v_cont").stop().animate({
+                                        left: offset
+                                }, "slow", function() {
+                                        $(".v_cont ul li").first().remove();
+                                        $(".v_cont").css("left", "0px");
+                                        animateEnd = 1
+                                })
+                        }
+                } else {
+                        var curt = $(".v_cont li").last().clone();
+                        for (var i = 0; i < currentindex - nextindex; i++) {
+                                var lastItem = $(".v_cont li").last();
+                                $(".v_cont ul").prepend(lastItem)
+                        }
+                        $(".v_cont ul").append(curt);
+                        var offset = ($(".v_cont li").width()) * -1;
+                        $(".v_cont").css("left", offset);
+                        if (animateEnd == 1) {
+                                animateEnd = 0;
+                                $(".v_cont").stop().animate({
+                                        left: "0px"
+                                }, "slow", function() {
+                                        $(".v_cont ul li").last().remove();
+                                        animateEnd = 1
+                                })
+                        }
+                }
+        })
+})
+</script>
+<!--代码部分end-->
+</body>
+</html>
