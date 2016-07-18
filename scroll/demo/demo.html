@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>焦点轮播图</title>
+    <script type="text/javascript" src="jquery-3.0.0.min.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<div id="container">
+    <!-- every picture's width -->
+    <div id="list" style="left: -600px;">
+        <!-- when carousel to the first picture,and chick the prev button,appear the last picture(virtual) -->
+        <img src="img/5.jpg" alt="1"/>
+        <img src="img/1.jpg" alt="1"/>
+        <img src="img/2.jpg" alt="2"/>
+        <img src="img/3.jpg" alt="3"/>
+        <img src="img/4.jpg" alt="4"/>
+        <img src="img/5.jpg" alt="5"/>
+        <!-- when carousel to the last picture,and chick the prev button,appear the first picture(virtual) -->
+        <img src="img/1.jpg" alt="5"/>
+    </div>
+    <!-- five chick buttons -->
+    <div id="buttons">
+        <span index="1" class="on"></span>
+        <span index="2"></span>
+        <span index="3"></span>
+        <span index="4"></span>
+        <span index="5"></span>
+    </div>
+    <!-- left buttonand right button -->
+    <a href="javascript:;" id="prev" class="arrow">&lt;</a>
+    <a href="javascript:;" id="next" class="arrow">&gt;</a>
+</div>
+
+</body>
+</html>
