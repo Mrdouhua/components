@@ -83,7 +83,7 @@ $(function(){
         else {
             index -= 1;
         }
-        animate(600);
+        animate(picWidth);
         showButton();
     }
 
@@ -96,7 +96,7 @@ $(function(){
                 return;
             }
             var myIndex = parseInt(this.getAttribute('index'));
-            var offset = -600 * (myIndex - index);
+            var offset = -picWidth * (myIndex - index);
 
             animate(offset);
             index = myIndex;

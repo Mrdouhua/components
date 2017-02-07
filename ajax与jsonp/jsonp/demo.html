@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jsonp</title>
+</head>
+<body>
+	<div id="c"></div>
+	<script src="jsonp.js"></script>
+	<script>
+		ajax({
+				url: 'jsonp.php',
+				jsonp: 'jsonpCallback',
+				data: {'intro': 'jsonp请求'},
+				success:function(res){
+					document.getElementById('c').innerHTML = res.intro;
+					console.log(res);
+				}
+			});
+	</script>
+</body>
+</html>

@@ -30,5 +30,5 @@ window.onload = function(){
 			{
 				obj.style.left = left+'px';
 			}
-		},30)
+		},300)
 	}
