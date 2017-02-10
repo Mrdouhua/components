@@ -1,0 +1,44 @@
+body, html {
+	margin: 0;
+	padding: 0;
+}
+.tab_box {
+	margin: 100px auto;
+	width: 299px;
+	height: 200px;
+	border: 1px solid #111;
+}
+.tab_menu {
+	margin: 0;
+	padding: 0;
+	width: 299px;
+	height: 30px;
+}
+.tab_menu li {
+	margin: 0;
+	padding: 0;
+	float: left;
+	width: 99px;
+	height: 30px;
+	text-align: center;
+	line-height: 30px;
+	border-bottom: 1px solid #111;
+	list-style-type: none;
+	cursor: pointer;
+}
+li+li {
+	border-left: 1px solid #111;
+}
+.tab_con {
+	width: 299px;
+	height: 170px;
+	overflow: hidden;
+}
+.items {
+	width: 299px;
+	height: 170px;
+}
+.select {
+	color: red;
+	font-weight: bolder;
+}
