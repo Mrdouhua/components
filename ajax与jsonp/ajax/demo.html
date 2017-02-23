@@ -6,7 +6,6 @@
 </head>
 <body>
 	<div id="a"></div>
-	<div id="b"></div>
 	<script src="ajax.js"></script>
 	<script>
 		ajax({
@@ -16,16 +15,6 @@
 				success:function(res){
 					res = JSON.parse(res);
 					document.getElementById('a').innerHTML = res.intro;
-					console.log(res);
-				}
-			});
-		ajax({
-				url: 'post.php',
-				type: 'POST',
-				data: {'intro': 'post请求'},
-				success:function(res){
-					res = JSON.parse(res);
-					document.getElementById('b').innerHTML = res.intro;
 					console.log(res);
 				}
 			});
