@@ -1,7 +1,7 @@
 window.onload = function(){
 	var oNav = document.getElementById('nav');
 	var oLi = oNav.getElementsByTagName('li');
-	var oBg = oNav.getElementsByClassName('bg');
+	// var oBg = oNav.getElementsByClassName('bg');
 	var oBg = oLi[oLi.length-1];
 	var i=0;
 
@@ -15,7 +15,7 @@ window.onload = function(){
 	}
 }
 	var iSpeed = 0;
-	var left = 0;
+	var left = 100;
 	function startMove(obj,iTarget){
 		clearInterval(obj.timer);
 
@@ -30,5 +30,5 @@ window.onload = function(){
 			{
 				obj.style.left = left+'px';
 			}
-		},300)
+		},30)
 	}
