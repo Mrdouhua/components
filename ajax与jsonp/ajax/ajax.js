@@ -20,7 +20,7 @@ function ajax(params) {
     xhr.onreadystatechange = function() {
       if(xhr.readyState == 4) {
         var status = xhr.status;
-        if(status >= 200 && status < 300) {
+        if(status >= 200 && status < 300 || status == 304) {
           var response = '';
           var type = xhr.getResponseHeader('Content-type');
           if(type.indexOf('xml') !== -1 && xhr.responseXML) {
